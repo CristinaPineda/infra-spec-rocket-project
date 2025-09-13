@@ -19,7 +19,7 @@ resource "aws_glue_catalog_database" "data_database" {
 # 3. Recurso para a tabela do Glue Data Catalog (que será usada pelo Athena)
 # Este recurso aponta para o bucket S3 que acabamos de criar.
 resource "aws_glue_catalog_table" "data_table" {
-  name          = "portos_data_catalog"
+  name          = "spec_portos"
   database_name = aws_glue_catalog_database.data_database.name
   table_type    = "EXTERNAL_TABLE"
 
