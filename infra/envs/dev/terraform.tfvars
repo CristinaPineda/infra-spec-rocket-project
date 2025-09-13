@@ -1,7 +1,4 @@
-aws_sqs_queue        = "rocket-project-dev-sqs-queue"
-sns_topic_name       = "rocket-project-dev-sns-topic"
-sns_topic_arn        = "arn:aws:sns:sa-east-1:063630845645:rocket-project-dev-sns-topic"
 project_name         = "rocket-project"
 environment          = "dev"
 aws_region           = "sa-east-1"
-lambda_function_name = "rocket-project-dev-lambda"
+data_bucket_name     = "rocket-project-dev-spec-data-bucket"

@@ -1,8 +1,3 @@
-variable "aws_sqs_queue" {
-  description = "The name of the SQS queue."
-  type        = string
-}
-
 variable "project_name" {
   description = "The name of the project. Used for tagging resources."
   type        = string
@@ -19,17 +14,7 @@ variable "aws_region" {
   default     = "sa-east-1"
 }
 
-variable "sns_topic_name" {
-  description = "The name of the SNS topic."
-  type        = string
-}
-
-variable "sns_topic_arn" {
-  description = "O ARN do tópico SNS para assinatura."
-  type        = string
-}
-
-variable "lambda_function_name" {
-  description = "The name of the Lambda function."
+variable "data_bucket_name" {
+  description = "The name of the S3 bucket to store data files."
   type        = string
 }
