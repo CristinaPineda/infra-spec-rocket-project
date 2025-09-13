@@ -8,8 +8,3 @@ terraform {
     dynamodb_table = "rocket-project-terraform-lock" # Opcional, mas recomendado para bloqueio de estado
   }
 }
-
-# 2. Configura o provedor AWS
-provider "aws" {
-  region = "sa-east-1"
-}
