@@ -1,16 +1,31 @@
-# Recurso para o banco de dados do Glue Data Catalog
+# Arquivo: glue_catalog.tf
+
+# 1. Recurso para o S3 Bucket que armazenará os dados
+resource "aws_s3_bucket" "data_bucket" {
+  bucket = var.data_bucket_name
+
+  tags = {
+    Project     = var.project_name
+    Environment = var.environment
+  }
+}
+
+# 2. Recurso para o banco de dados do Glue Data Catalog
+# O Athena precisa de um banco de dados para organizar as tabelas.
 resource "aws_glue_catalog_database" "data_database" {
   name = "${var.project_name}-${var.environment}-db"
 }
 
-# Recurso para a tabela do Glue Data Catalog (que será usada pelo Athena)
+# 3. Recurso para a tabela do Glue Data Catalog (que será usada pelo Athena)
+# Este recurso aponta para o bucket S3 que acabamos de criar.
 resource "aws_glue_catalog_table" "data_table" {
   name          = "portos_data_catalog"
   database_name = aws_glue_catalog_database.data_database.name
   table_type    = "EXTERNAL_TABLE"
 
   storage_descriptor {
-    location      = "s3://${var.data_bucket_name}/spec_portos/"
+    # Referencia o bucket S3 criado acima
+    location      = "s3://${aws_s3_bucket.data_bucket.bucket}/spec_portos/"
     input_format  = "org.apache.hadoop.hive.ql.io.parquet.MapredParquetInputFormat"
     output_format = "org.apache.hadoop.hive.ql.io.parquet.MapredParquetOutputFormat"
 
