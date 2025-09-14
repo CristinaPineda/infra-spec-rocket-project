@@ -5,6 +5,6 @@ terraform {
     key            = "glue-catalog/terraform.tfstate"
     region         = "sa-east-1"
     encrypt        = true
-    dynamodb_table = "rocket-project-terraform-lock" # Opcional, mas recomendado para bloqueio de estado
+    dynamodb_table = "rocket-projec-terraform-lock" # Opcional, mas recomendado para bloqueio de estado
   }
 }
